@@ -6,12 +6,14 @@ import javax.persistence.Persistence;
 
 public class Db {
 
-    static  EntityManagerFactory emf;
-    static EntityManager em;
+    public static  EntityManagerFactory emf;
+    public static EntityManager em;
 
-    public static void openConnection(){
+    public static EntityManager openConnection(){
         emf = Persistence.createEntityManagerFactory("projetoPoo");
         em  = emf.createEntityManager();
+
+        return em;
     }
 
     public static void closeConnection(){
