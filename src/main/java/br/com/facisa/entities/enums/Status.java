@@ -15,4 +15,10 @@ public enum Status {
     public String getName(){
         return this.getName();
     }
+
+	public void setName(String name) {
+		this.name = name;
+	}
+    
+    
 }

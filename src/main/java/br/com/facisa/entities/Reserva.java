@@ -1,7 +1,6 @@
 package br.com.facisa.entities;
 
 import javax.persistence.*;
-import java.security.interfaces.RSAKey;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -16,7 +15,7 @@ public class Reserva {
     private LocalDate checkin;
 
     private LocalDate checkout;
-
+;
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
