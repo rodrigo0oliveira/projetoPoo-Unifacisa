@@ -14,9 +14,6 @@ public class Quarto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    private int numero;
-
     private Tipo tipo;
 
     private int capacidade;
@@ -28,9 +25,8 @@ public class Quarto {
     public Quarto(){
     }
 
-    public Quarto(int capacidade, int numero, BigDecimal precoHora, Tipo tipo) {
+    public Quarto(int capacidade, BigDecimal precoHora, Tipo tipo) {
         this.capacidade = capacidade;
-        this.numero = numero;
         this.precoHora = precoHora;
         this.tipo = tipo;
         this.status = Status.DISPONIVEL;
@@ -45,13 +41,6 @@ public class Quarto {
         this.capacidade = capacidade;
     }
 
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
 
     public BigDecimal getPrecoHora() {
         return precoHora;

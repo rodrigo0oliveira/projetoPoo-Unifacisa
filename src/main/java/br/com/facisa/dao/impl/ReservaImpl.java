@@ -34,4 +34,10 @@ public class ReservaImpl implements ReservaDao{
 		return list;
 	}
 
+	@Override
+	public Reserva buscarPorId(Long id) {
+		em.getTransaction().begin();
+        return em.find(Reserva.class,id);
+	}
+
 }

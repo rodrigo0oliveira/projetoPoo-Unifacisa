@@ -11,4 +11,6 @@ public interface ReservaDao {
 	void cancelarReserva(Long id);
 	
 	List<Reserva> visualizarReservasPorUsuario (Long id);
+
+	Reserva buscarPorId(Long id);
 }
