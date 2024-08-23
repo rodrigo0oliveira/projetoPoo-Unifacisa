@@ -1,16 +1,20 @@
 package br.com.facisa.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import java.time.LocalDate;
+
+import jakarta.persistence.JoinColumn;
 
 @Entity
 public class Hospede extends Pessoa{
 
     private LocalDate nascimento;
 
-    @OneToOne
+    
+    @OneToOne(cascade =  javax.persistence.CascadeType.ALL) 
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
     private String numero;
@@ -24,8 +28,17 @@ public class Hospede extends Pessoa{
         this.nascimento = nascimento;
         this.numero = numero;
     }
+    
+    
 
-    public Endereco getEndereco() {
+    public Hospede(String nome,LocalDate nascimento, Endereco endereco, String numero) {
+		super(nome);
+		this.nascimento = nascimento;
+		this.endereco = endereco;
+		this.numero = numero;
+	}
+
+	public Endereco getEndereco() {
         return endereco;
     }
 

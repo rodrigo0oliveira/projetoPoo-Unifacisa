@@ -11,9 +11,9 @@ public class HospedeService {
 	
 	private Validador validador;
 	
-	public HospedeService(HospedeImpl hospedeImpl,Validador validador) {
-		this.hospedeDao = hospedeImpl;
-		this.validador = validador;
+	public HospedeService() {
+		this.hospedeDao = new HospedeImpl();
+		this.validador = new Validador();
 	}
 	
 	public String cadastrarHospede(Hospede hospede) {
