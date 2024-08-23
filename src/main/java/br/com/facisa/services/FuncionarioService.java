@@ -11,9 +11,9 @@ public class FuncionarioService {
 	
 	private Validador validador;
 	
-	public FuncionarioService(FuncionarioImpl funcionarioImpl,Validador validador) {
-		this.funcionarioImpl = funcionarioImpl;
-		this.validador = validador;
+	public FuncionarioService() {
+		this.funcionarioImpl =  new FuncionarioImpl();
+		this.validador = new Validador();
 	}
 	
 	public String cadastrarFuncionario(Funcionario funcionario) {

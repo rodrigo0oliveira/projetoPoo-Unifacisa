@@ -16,8 +16,7 @@ import br.com.facisa.services.utils.Validador;
 
 public class FuncionarioServiceTest {
 	
-	Validador validador;
-	FuncionarioImpl funcionarioImpl;
+	
 	
 	FuncionarioService funcionarioService;
 	
@@ -25,11 +24,9 @@ public class FuncionarioServiceTest {
 	
 	@Before
 	public void setup() {
-		validador = new Validador();
-		funcionarioImpl = new FuncionarioImpl();
 		Db.openConnection();
 		
-		funcionarioService = new FuncionarioService(funcionarioImpl, validador);
+		funcionarioService = new FuncionarioService();
 	}
 	
 	@After
