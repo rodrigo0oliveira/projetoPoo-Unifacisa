@@ -1,7 +1,6 @@
 package br.com.facisa.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
@@ -23,7 +22,14 @@ public class Funcionario extends Pessoa{
         this.turno = turno;
     }
 
-    public String getCargo() {
+    public Funcionario(String name,String cargo, BigDecimal salario, String turno) {
+		super(name);
+		this.cargo = cargo;
+		this.salario = salario;
+		this.turno = turno;
+	}
+
+	public String getCargo() {
         return cargo;
     }
 

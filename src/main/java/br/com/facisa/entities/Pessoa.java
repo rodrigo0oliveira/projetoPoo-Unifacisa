@@ -23,8 +23,14 @@ public abstract class Pessoa {
         this.cpf = cpf;
         this.nome = name;
     }
+    
 
-    public String getCpf() {
+    public Pessoa(String nome) {
+		super();
+		this.nome = nome;
+	}
+
+	public String getCpf() {
         return cpf;
     }
 
