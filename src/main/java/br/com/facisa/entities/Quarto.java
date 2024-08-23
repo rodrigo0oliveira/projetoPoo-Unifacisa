@@ -13,13 +13,15 @@ public class Quarto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
 
     private int capacidade;
 
     private BigDecimal precoHora;
-
+    
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public Quarto(){

@@ -56,6 +56,7 @@ public class HospedeController {
 			catch (RuntimeException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 			}
+			break;
 			
 			
 		}
@@ -85,6 +86,7 @@ public class HospedeController {
 			catch (RuntimeException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 			}
+			break;
 			
 		}
 		case "Excluir" : {
@@ -100,6 +102,7 @@ public class HospedeController {
 			catch (RuntimeException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 			}
+			break;
 		}
 		default:
 		

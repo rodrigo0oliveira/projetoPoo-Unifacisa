@@ -11,8 +11,8 @@ public class QuartoService {
 
     private QuartoDao quartoDao;
 
-    public QuartoService(QuartoImpl quartoimpl){
-        this.quartoDao = quartoimpl;
+    public QuartoService(){
+        this.quartoDao = new QuartoImpl();
     }
 
     public String criarQuarto (Quarto quarto){

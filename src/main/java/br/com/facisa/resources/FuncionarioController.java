@@ -48,7 +48,7 @@ public class FuncionarioController {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+			break;
 		}
 		case "Editar" : {
 			
@@ -72,6 +72,7 @@ public class FuncionarioController {
 			catch (RuntimeException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 			}
+			break;
 			
 		}
 		case "Excluir" : {
@@ -86,6 +87,7 @@ public class FuncionarioController {
 			catch (RuntimeException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 			}
+			break;
 		}
 		default:
 			
