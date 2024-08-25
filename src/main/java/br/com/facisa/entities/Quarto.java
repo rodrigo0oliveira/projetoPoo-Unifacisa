@@ -67,8 +67,12 @@ public class Quarto {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
+    
+    public Long getId() {
+		return id;
+	}
 
-    @Override
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -80,4 +84,12 @@ public class Quarto {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+	@Override
+	public String toString() {
+		return "Quarto " + id + "| Tipo =" + tipo + "| Capacidade = " + capacidade + ", Preço/hora = " + precoHora
+				+ "| Status = " + status;
+	}
+    
+    
 }

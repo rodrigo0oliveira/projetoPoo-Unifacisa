@@ -82,4 +82,12 @@ public class Reserva {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+	@Override
+	public String toString() {
+		return "Reserva : Checkin =" + checkin + "| Checkout=" + checkout + 
+				"|Pessoa =" + pessoa.getNome() + "|Quarto =" + quarto.getId();
+	}
+    
+    
 }

@@ -53,4 +53,14 @@ public class Funcionario extends Pessoa{
         this.turno = turno;
     }
 
+	@Override
+	public String toString() {
+		return "Funcionario "+getNome()+ ": CPF = "+getCpf()+
+				" |Cargo = "+this.cargo+" |Salário = R$"+this.salario+" |Turno = "+this.turno;
+	}
+    
+    
+    
+    
+
 }

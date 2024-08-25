@@ -40,4 +40,13 @@ public class Endereco {
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+	@Override
+	public String toString() {
+		return "Endereco : País =" + pais + ", Cidade =" + cidade ;
+	}
+    
+    
+    
+    
 }

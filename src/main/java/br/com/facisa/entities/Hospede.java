@@ -61,4 +61,12 @@ public class Hospede extends Pessoa{
     public void setNumero(String numero) {
         this.numero = numero;
     }
+
+	@Override
+	public String toString() {
+		return "Hóspede "+getNome()+ ": CPF = "+getCpf()+
+				" |Nascimento = "+this.nascimento+" |Número = "+this.numero;
+	}
+    
+    
 }
