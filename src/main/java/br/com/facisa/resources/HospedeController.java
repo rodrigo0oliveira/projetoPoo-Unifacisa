@@ -11,7 +11,7 @@ import br.com.facisa.services.HospedeService;
 
 public class HospedeController {
 	
-	static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	HospedeService hospedeService;
 	

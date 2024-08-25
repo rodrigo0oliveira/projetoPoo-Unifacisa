@@ -37,4 +37,14 @@ public class HospedeImpl implements HospedeDao {
         obj.setNumero(hospede.getNumero());
         obj.setNome(hospede.getNome());
     }
+
+	@Override
+	public Hospede buscarPorId(Long id) {
+		
+		em.getTransaction().begin();
+		Hospede hospede = em.find(Hospede.class, id);
+		em.getTransaction().commit();
+		return hospede;
+		
+	}
 }

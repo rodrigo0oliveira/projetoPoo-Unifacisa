@@ -9,4 +9,8 @@ public interface HospedeDao {
     void editar(Long id,Hospede hospede);
 
     void excluir(Long id);
+    
+    Hospede buscarPorId(Long id);
+    
+    
 }

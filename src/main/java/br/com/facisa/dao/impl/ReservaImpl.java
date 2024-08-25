@@ -28,16 +28,23 @@ public class ReservaImpl implements ReservaDao{
 	@Override
 	public List<Reserva> visualizarReservasPorUsuario(Long id) {
 		em.getTransaction().begin();
-		Query<Reserva> query = (Query<Reserva>) em.createQuery("SELECT e FROM tb_reservas WHERE pessoa_id = id").setParameter("id", id)
-				.getResultList();
+		
+		String hql = "FROM Reserva WHERE pessoa_id = : id";
+		Query query = (Query) em.createQuery(hql);
+		query.setParameter("id", id);
+		
 		List<Reserva> list = query.getResultList();
+		
+		em.getTransaction().commit();
 		return list;
 	}
 
 	@Override
 	public Reserva buscarPorId(Long id) {
 		em.getTransaction().begin();
-        return em.find(Reserva.class,id);
+        Reserva reserva = em.find(Reserva.class,id);
+        em.getTransaction().commit();
+        return reserva;
 	}
 
 }

@@ -48,6 +48,10 @@ public class HospedeService {
 		}
 	}
 	
+	public Hospede buscarPorId(Long id) {
+		return hospedeDao.buscarPorId(id);
+	}
+	
 	
 	private void verificarCamposHospede(Hospede hospede) {
 		if(hospede.getNascimento()==null

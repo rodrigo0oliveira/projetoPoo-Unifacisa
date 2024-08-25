@@ -40,4 +40,10 @@ public class QuartoService {
             return "Erro ao atualizar o quarto";
         }
     }
+    
+    public Quarto buscarPorId(Long id) {
+    	return quartoDao.buscarPorId(id);
+    }
+    
+  
 }

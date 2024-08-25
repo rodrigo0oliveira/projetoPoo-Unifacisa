@@ -44,24 +44,21 @@ public class MainController {
 
 			case "Funcionário": {
 				funcionarioController.FuncionarioController();
-
+				break;
 			}
 			case "Hóspede": {
 				hospedeController.HospedeController();
-
+				break;
 			}
 			case "Reserva": {
 				reservaController.ReservaController();
+				break;
 			}
 			case "Quarto": {
 				quartoController.QuartoController();
+				break;
 			}
-			int continuar = JOptionPane.showConfirmDialog(null, "Deseja continuar ?","Input",JOptionPane.YES_NO_OPTION);
-			if(continuar == 1) {
-				Db.closeConnection();
-				JOptionPane.showMessageDialog(null, "Gerenciamento encerrado!");
-				rodar = false;
-			}
+			
 			default:
 				
 			}

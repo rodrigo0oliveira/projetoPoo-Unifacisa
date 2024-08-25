@@ -14,5 +14,7 @@ public interface QuartoDao {
 	List<Quarto> listarTodos();
 	
 	void atualizarStatus(Long id,Status status);
+	
+	Quarto buscarPorId(Long id);
 
 }

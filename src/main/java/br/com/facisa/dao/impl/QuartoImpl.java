@@ -54,4 +54,14 @@ public class QuartoImpl implements QuartoDao {
 		em.getTransaction().commit();
 	}
 
+	@Override
+	public Quarto buscarPorId(Long id) {
+		em.getTransaction().begin();
+		Quarto quarto = em.find(Quarto.class, id);
+		em.getTransaction().commit();
+		
+		return quarto;
+		
+	}
+
 }
