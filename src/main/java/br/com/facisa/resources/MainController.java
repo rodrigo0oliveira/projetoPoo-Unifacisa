@@ -25,7 +25,7 @@ public class MainController {
 
 	public void main() {
 		
-		JOptionPane.showMessageDialog(null, "Sistema de " + "gerenciamento do hotel");
+		JOptionPane.showMessageDialog(null, "Sistema de Gerenciamento do Hotel");
 
 		Db.openConnection();
 		boolean rodar = true;
@@ -33,7 +33,7 @@ public class MainController {
 		while (rodar) {
 			
 
-			String[] opcoes = { "Funcionário", "Hóspede", "Reserva", "Quarto" };
+			String[] opcoes = { "Funcionário", "Hóspede", "Reserva", "Quarto", "Sair" };
 
 			Object selecionado = JOptionPane.showInputDialog(null, "Selecione ", "Escolha o que quer gerenciar",
 					JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
@@ -57,6 +57,10 @@ public class MainController {
 			case "Quarto": {
 				quartoController.QuartoController();
 				break;
+			}
+			case "Sair" : {
+				JOptionPane.showMessageDialog(null, "Gerenciamento encerrado!");
+				rodar = false;
 			}
 			
 			default:

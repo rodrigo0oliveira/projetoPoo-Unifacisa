@@ -25,6 +25,10 @@ public class ReservaService {
 
 	public String criarReserva(Reserva reserva) {
 		try {
+			
+			if(reserva.getQuarto().getStatus()!=Status.DISPONIVEL) {
+				return "O quarto selecionado não está disponível!";
+			}
 
 			reserva.getQuarto().setStatus(Status.OCUPADO);
 			verificarCheckinECheckout(reserva);
