@@ -31,7 +31,7 @@ public class QuartoController {
 
 		case "Cadastrar": {
 			try {
-				Tipo tipo = verificarTipo();
+				Tipo tipo = quartoService.verificarTipo();
 				String capacidadeString = JOptionPane.showInputDialog("Digite a capacidade do quarto :");
 				String precoString = JOptionPane.showInputDialog("Digite o preço por hora do quarto :");
 				
@@ -81,7 +81,7 @@ public class QuartoController {
 			try {
 				String identificador = JOptionPane.showInputDialog("Digite o id do quarto :");
 				Long id = Long.parseLong(identificador);
-				Status status = editarStatus();
+				Status status = quartoService.editarStatus();
 				
 				quartoService.atualizarStatusQuarto(id, status);
 			}
@@ -97,55 +97,8 @@ public class QuartoController {
 
 	}
 
-	private Tipo verificarTipo() {
-
-		String[] turnos = { "Solteiro", "Casal", "Suite" };
-		Object turnoEscolha = JOptionPane.showInputDialog(null, "Selecione", "Tipo do quarto",
-				JOptionPane.INFORMATION_MESSAGE, null, turnos, turnos[0]);
-		
-		String escolha = turnoEscolha.toString();
-
-		switch (escolha) {
-		case "Solteiro" : {
-			return Tipo.SOLTEIRO;
-		}
-		case "Casal" : {
-			return Tipo.CASAL;
-		}
-		case "Suite" : {
-			return Tipo.SUITE;
-		}
-		default:
-			
-		}
-		return null;
-
-	}
 	
-	private Status editarStatus() {
-		
-		String[] turnos = { "Agendado", "Manutenção", "Disponível" };
-		Object turnoEscolha = JOptionPane.showInputDialog(null, "Selecione", "Editar Status do quarto",
-				JOptionPane.INFORMATION_MESSAGE, null, turnos, turnos[0]);
-		
-		String escolha = turnoEscolha.toString();
-
-		switch (escolha) {
-		case "Agendado" : {
-			return Status.AGENDADO;
-		}
-		case "Manutenção" : {
-			return Status.MANUTENCAO;
-		}
-		case "Disponível" : {
-			return Status.DISPONIVEL;
-		}
-		default:
-			
-		}
-		return null;
-		
-	}
+	
 	
 
 

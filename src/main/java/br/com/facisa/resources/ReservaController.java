@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import br.com.facisa.entities.Hospede;
 import br.com.facisa.entities.Quarto;
 import br.com.facisa.entities.Reserva;
+import br.com.facisa.entities.enums.Tipo;
 import br.com.facisa.services.HospedeService;
 import br.com.facisa.services.QuartoService;
 import br.com.facisa.services.ReservaService;
@@ -42,6 +43,9 @@ public class ReservaController {
 		case "Criar reserva" : {
 			
 			try {
+				
+				retornarListaPorTipo();
+				
 				
 				String checkinString = JOptionPane.showInputDialog("Digite a data de entrada no formato dd/MM/yyyy ");
 				String checkoutString = JOptionPane.showInputDialog("Digite a data de saída no formato dd/MM/yyyy ");
@@ -98,6 +102,16 @@ public class ReservaController {
 		
 	}
 	
+	
+	private void retornarListaPorTipo(){
+		Tipo tipo = quartoService.verificarTipo();
+		List<Quarto> list = quartoService.buscaPorTipo(tipo);
+		
+		if(list.isEmpty()) {
+			throw new RuntimeException("Não existem quartos no tipo selecionado!");
+		}
+		JOptionPane.showMessageDialog(null, list);
+	}
 
 
 	

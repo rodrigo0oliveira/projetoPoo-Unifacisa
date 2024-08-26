@@ -2,6 +2,8 @@ package br.com.facisa.services;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.com.facisa.dao.QuartoDao;
 import br.com.facisa.dao.impl.QuartoImpl;
 import br.com.facisa.entities.Quarto;
@@ -67,6 +69,58 @@ public class QuartoService {
     	}
     	return list;
     }
+    
+    public Tipo verificarTipo() {
+
+		String[] turnos = { "Solteiro", "Casal", "Suite" };
+		Object turnoEscolha = JOptionPane.showInputDialog(null, "Selecione", "Tipo do quarto",
+				JOptionPane.INFORMATION_MESSAGE, null, turnos, turnos[0]);
+		
+		String escolha = turnoEscolha.toString();
+
+		switch (escolha) {
+		case "Solteiro" : {
+			return Tipo.SOLTEIRO;
+		}
+		case "Casal" : {
+			return Tipo.CASAL;
+		}
+		case "Suite" : {
+			return Tipo.SUITE;
+		}
+		default:
+			
+		}
+		return null;
+
+	}
+    
+    
+    public Status editarStatus() {
+		
+		String[] turnos = { "Agendado", "Manutenção", "Disponível" };
+		Object turnoEscolha = JOptionPane.showInputDialog(null, "Selecione", "Editar Status do quarto",
+				JOptionPane.INFORMATION_MESSAGE, null, turnos, turnos[0]);
+		
+		String escolha = turnoEscolha.toString();
+
+		switch (escolha) {
+		case "Agendado" : {
+			return Status.AGENDADO;
+		}
+		case "Manutenção" : {
+			return Status.MANUTENCAO;
+		}
+		case "Disponível" : {
+			return Status.DISPONIVEL;
+		}
+		default:
+			
+		}
+		return null;
+		
+	}
+	
     
     
     
