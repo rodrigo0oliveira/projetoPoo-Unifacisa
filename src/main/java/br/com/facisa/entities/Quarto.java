@@ -88,7 +88,7 @@ public class Quarto {
 	@Override
 	public String toString() {
 		return "Quarto " + id + "| Tipo =" + tipo + "| Capacidade = " + capacidade + ", Preço/hora = " + precoHora
-				+ "| Status = " + status;
+				+ "| Status = " + status+"\n";
 	}
     
     

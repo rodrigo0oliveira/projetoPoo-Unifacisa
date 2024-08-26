@@ -1,18 +1,11 @@
 package br.com.facisa.services;
 
-import br.com.facisa.dao.HospedeDao;
-import br.com.facisa.dao.QuartoDao;
 import br.com.facisa.dao.ReservaDao;
-import br.com.facisa.dao.impl.HospedeImpl;
-import br.com.facisa.dao.impl.QuartoImpl;
 import br.com.facisa.dao.impl.ReservaImpl;
-import br.com.facisa.entities.Quarto;
 import br.com.facisa.entities.Reserva;
 import br.com.facisa.entities.enums.Status;
 
 import java.util.List;
-
-import org.postgresql.shaded.com.ongres.scram.common.bouncycastle.pbkdf2.RuntimeCryptoException;
 
 public class ReservaService {
 
@@ -30,7 +23,7 @@ public class ReservaService {
 				return "O quarto selecionado não está disponível!";
 			}
 
-			reserva.getQuarto().setStatus(Status.OCUPADO);
+			reserva.getQuarto().setStatus(Status.AGENDADO);
 			verificarCheckinECheckout(reserva);
 			reservaDao.criarReserva(reserva);
 			return "Reserva criada";

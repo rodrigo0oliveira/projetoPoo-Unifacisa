@@ -56,7 +56,7 @@ public class QuartoController {
 			
 			try {
 				List<Quarto> listQuartosDiponiveis = quartoService.listarQuartosDisponiveis();
-				JOptionPane.showMessageDialog(null,listQuartosDiponiveis);
+				JOptionPane.showMessageDialog(null,listQuartosDiponiveis.toString());
 			}
 			catch (RuntimeException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -69,7 +69,7 @@ public class QuartoController {
 			
 			try {
 				List<Quarto> listQuartos = quartoService.listarQuartos();
-				JOptionPane.showMessageDialog(null,listQuartos);
+				JOptionPane.showMessageDialog(null,listQuartos.toString());
 			}
 			catch (RuntimeException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -124,15 +124,15 @@ public class QuartoController {
 	
 	private Status editarStatus() {
 		
-		String[] turnos = { "Ocupado", "Manutenção", "Disponível" };
+		String[] turnos = { "Agendado", "Manutenção", "Disponível" };
 		Object turnoEscolha = JOptionPane.showInputDialog(null, "Selecione", "Editar Status do quarto",
 				JOptionPane.INFORMATION_MESSAGE, null, turnos, turnos[0]);
 		
 		String escolha = turnoEscolha.toString();
 
 		switch (escolha) {
-		case "Ocupado" : {
-			return Status.OCUPADO;
+		case "Agendado" : {
+			return Status.AGENDADO;
 		}
 		case "Manutenção" : {
 			return Status.MANUTENCAO;

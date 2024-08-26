@@ -9,6 +9,7 @@ import org.hibernate.query.Query;
 import br.com.facisa.dao.QuartoDao;
 import br.com.facisa.entities.Quarto;
 import br.com.facisa.entities.enums.Status;
+import br.com.facisa.entities.enums.Tipo;
 
 public class QuartoImpl implements QuartoDao {
 
@@ -62,6 +63,19 @@ public class QuartoImpl implements QuartoDao {
 		
 		return quarto;
 		
+	}
+
+	@Override
+	public List<Quarto> buscarPorTipo(Tipo tipo) {
+		em.getTransaction().begin();
+		String hql = "FROM Quarto WHERE tipo = :tipo";
+		Query query = (Query) em.createQuery(hql,QuartoDao.class);
+		
+		List<Quarto> list = query.getResultList();
+		
+		em.getTransaction().commit();
+		
+		return list;
 	}
 
 }

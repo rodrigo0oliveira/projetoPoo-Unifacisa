@@ -1,11 +1,12 @@
 package br.com.facisa.services;
 
+import java.util.List;
+
 import br.com.facisa.dao.QuartoDao;
 import br.com.facisa.dao.impl.QuartoImpl;
 import br.com.facisa.entities.Quarto;
 import br.com.facisa.entities.enums.Status;
-
-import java.util.List;
+import br.com.facisa.entities.enums.Tipo;
 
 public class QuartoService {
 
@@ -58,6 +59,16 @@ public class QuartoService {
     	return quarto;
     	
     }
+    
+    public List<Quarto> buscaPorTipo(Tipo tipo) {
+    	List<Quarto> list = quartoDao.buscarPorTipo(tipo);
+    	if(list.isEmpty()) {
+    		throw new RuntimeException("Não existem quartos diponíveis no tipo selecionado!");
+    	}
+    	return list;
+    }
+    
+    
     
   
 }

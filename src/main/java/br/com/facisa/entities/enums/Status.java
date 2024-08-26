@@ -3,7 +3,7 @@ package br.com.facisa.entities.enums;
 public enum Status {
 
     DISPONIVEL("DISPONIVEL"),
-    OCUPADO("OCUPADO"),
+    AGENDADO("AGENDADO"),
     MANUTENCAO("MANUTENÇAO");
 
     private String name;
