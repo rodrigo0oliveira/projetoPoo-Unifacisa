@@ -50,8 +50,8 @@ public class ReservaController {
 				String identificadorQuarto = JOptionPane.showInputDialog("Digite o id do quarto :");
 				Long idQuarto = Long.parseLong(identificadorQuarto);
 				
-				Hospede hospede = retornarHospede(idHospede);
-				Quarto quarto = retornarQuarto(idQuarto);
+				Hospede hospede = hospedeService.buscarPorId(idHospede);
+				Quarto quarto = quartoService.buscarPorId(idQuarto);
 				
 				LocalDate checkin = LocalDate.parse(checkinString,formatter);
 				LocalDate checkout = LocalDate.parse(checkoutString,formatter);
@@ -98,21 +98,12 @@ public class ReservaController {
 		
 	}
 	
-	public Hospede retornarHospede(Long id) {
-		Hospede hospede = hospedeService.buscarPorId(id);
-		if(hospede==null) {
-			throw new RuntimeException("Hóspede informado não está cadastrado");	
-		}
-		return hospede;
-	}
-	
 
-	public Quarto retornarQuarto(Long id) {
-		Quarto quarto = quartoService.buscarPorId(id);
-		if(quarto==null) {
-			throw new RuntimeException("Quarto informado não está cadastrado");	
-		}
-		return quarto;
-	}
+
+	
+	
+	
+	
+	
 
 }
