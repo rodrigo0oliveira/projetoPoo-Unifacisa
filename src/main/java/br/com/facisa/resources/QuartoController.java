@@ -54,15 +54,26 @@ public class QuartoController {
 		}
 		case "Buscar quartos disponíveis": {
 			
-			List<Quarto> listQuartosDiponiveis = quartoService.listarQuartosDisponiveis();
-			JOptionPane.showMessageDialog(null,listQuartosDiponiveis);
+			try {
+				List<Quarto> listQuartosDiponiveis = quartoService.listarQuartosDisponiveis();
+				JOptionPane.showMessageDialog(null,listQuartosDiponiveis);
+			}
+			catch (RuntimeException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+			}
+		
 			break;
 
 		}
 		case "Buscar todos": {
 			
-			List<Quarto> listQuartos = quartoService.listarQuartos();
-			JOptionPane.showMessageDialog(null,listQuartos);
+			try {
+				List<Quarto> listQuartos = quartoService.listarQuartos();
+				JOptionPane.showMessageDialog(null,listQuartos);
+			}
+			catch (RuntimeException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+			}
 			break;
 
 		}

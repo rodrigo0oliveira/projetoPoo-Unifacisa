@@ -25,11 +25,19 @@ public class QuartoService {
     }
 
     public List<Quarto> listarQuartosDisponiveis(){
-        return quartoDao.listarDisponiveis();
+    	List<Quarto> list = quartoDao.listarDisponiveis();
+        if(list.isEmpty()) {
+        	throw new RuntimeException("Não existem quartos disponíveis no momento!");
+        }
+        return list;
     }
 
     public List<Quarto> listarQuartos(){
-        return quartoDao.listarTodos();
+        List<Quarto> list = quartoDao.listarTodos();
+        if(list.isEmpty()) {
+        	throw new RuntimeException("Não existem quartos cadastrados!");
+        }
+        return list;
     }
 
     public String atualizarStatusQuarto(Long id, Status status){
@@ -42,7 +50,13 @@ public class QuartoService {
     }
     
     public Quarto buscarPorId(Long id) {
-    	return quartoDao.buscarPorId(id);
+    	
+    	Quarto quarto = quartoDao.buscarPorId(id);
+    	if(quarto==null) {
+    		throw new RuntimeException("Quarto não encontrado!");
+    	}
+    	return quarto;
+    	
     }
     
   
