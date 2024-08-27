@@ -32,7 +32,7 @@ public class ReservaController {
 	
 	public void ReservaController() {
 		
-		String [] opcoes = {"Criar reserva","Buscar Reservas de determinado hóspede","Excluir reserva"};
+		String [] opcoes = {"Criar reserva","Buscar Reservas de determinado hóspede","Excluir reserva","Calcular valor de uma reserva"};
 		
 		Object selecionado = JOptionPane.showInputDialog(null, 
 				"Selecione", "Gerenciamento de reservas", JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
@@ -100,6 +100,20 @@ public class ReservaController {
 			String message = reservaService.excluirReserva(idReserva);
 			
 			JOptionPane.showMessageDialog(null,message);
+			break;
+			
+		}
+		case "Calcular valor de uma reserva":{
+			try {
+				String identificadorReserva = JOptionPane.showInputDialog("Digite o id do reserva :");
+				Long idReserva = Long.parseLong(identificadorReserva);
+				
+				String extrato = reservaService.calcularValorEstadia(idReserva);
+				JOptionPane.showMessageDialog(null,extrato);
+			}
+			catch (RuntimeException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+			}
 			break;
 			
 		}

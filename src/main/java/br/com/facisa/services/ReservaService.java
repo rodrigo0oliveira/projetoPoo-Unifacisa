@@ -1,10 +1,15 @@
 package br.com.facisa.services;
 
+import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import br.com.facisa.dao.ReservaDao;
 import br.com.facisa.dao.impl.ReservaImpl;
+import br.com.facisa.dtos.ExtratoEstadia;
 import br.com.facisa.entities.Quarto;
 import br.com.facisa.entities.Reserva;
 import br.com.facisa.entities.enums.Status;
@@ -66,6 +71,26 @@ public class ReservaService {
 		if (reserva.getCheckout().isBefore(reserva.getCheckin())) {
 			throw new RuntimeException("A data de saída(checkout) deve ser posterior a data de entrada(checkin)!");
 		}
+	}
+	
+	public String calcularValorEstadia(Long id) {
+		
+		Reserva reserva = reservaDao.buscarPorId(id);
+		if(reserva!=null) {
+			BigDecimal precoHora = reserva.getQuarto().getPrecoHora();
+			long dias = ChronoUnit.DAYS.between(reserva.getCheckin(), reserva.getCheckout());
+			
+			long  horas = dias*24;
+			
+			Double valorTotal = precoHora.doubleValue()*horas;
+			
+			ExtratoEstadia extrato = new ExtratoEstadia(reserva.getQuarto().getId()
+					, reserva.getPessoa().getNome(), valorTotal, reserva.getCheckin(), reserva.getCheckout(), precoHora);
+			
+			return extrato.toString();
+		}
+		throw new RuntimeException("Reserva não encontrada!");
+		
 	}
 	
 	
