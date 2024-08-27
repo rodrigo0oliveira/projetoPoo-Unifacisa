@@ -1,12 +1,15 @@
 package br.com.facisa.dao.impl;
 
-import br.com.facisa.dao.ReservaDao;
-import br.com.facisa.entities.Reserva;
 import static br.com.facisa.database.Db.em;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.query.Query;
+
+import br.com.facisa.dao.ReservaDao;
+import br.com.facisa.entities.Quarto;
+import br.com.facisa.entities.Reserva;
 
 public class ReservaImpl implements ReservaDao{
 
@@ -46,5 +49,26 @@ public class ReservaImpl implements ReservaDao{
         em.getTransaction().commit();
         return reserva;
 	}
+
+	@Override
+	public List<Quarto> verificarHorario(Long id, LocalDate checkin, LocalDate checkout) {
+		em.getTransaction().begin();
+		
+		String hql = "FROM Reserva WHERE quarto_id = : id "
+				+ "AND checkin < : checkout "
+				+ "AND checkout > : checkin  ";
+		
+		Query query = (Query) em.createQuery(hql);
+		query.setParameter("id", id);
+		query.setParameter("checkin", checkin);
+		query.setParameter("checkout", checkout);
+		
+		List<Quarto> list = query.getResultList();
+		em.getTransaction().commit();
+		
+		return list;
+	}
+
+	
 
 }

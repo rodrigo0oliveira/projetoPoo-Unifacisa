@@ -1,11 +1,13 @@
 package br.com.facisa.services;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import br.com.facisa.dao.ReservaDao;
 import br.com.facisa.dao.impl.ReservaImpl;
+import br.com.facisa.entities.Quarto;
 import br.com.facisa.entities.Reserva;
 import br.com.facisa.entities.enums.Status;
-
-import java.util.List;
 
 public class ReservaService {
 
@@ -19,17 +21,16 @@ public class ReservaService {
 	public String criarReserva(Reserva reserva) {
 		try {
 			
-			if(reserva.getQuarto().getStatus()!=Status.DISPONIVEL) {
+			if(reserva.getQuarto().getStatus()==Status.MANUTENCAO) {
 				return "O quarto selecionado não está disponível!";
 			}
-
-			reserva.getQuarto().setStatus(Status.AGENDADO);
 			verificarCheckinECheckout(reserva);
+			reserva.getQuarto().setStatus(Status.AGENDADO);
 			reservaDao.criarReserva(reserva);
 			return "Reserva criada";
 
 		} catch (RuntimeException e) {
-			return "Erro ao criar reserva!";
+			return e.getMessage();
 
 		}
 	}
@@ -48,6 +49,15 @@ public class ReservaService {
 
 	public List<Reserva> buscarReservasPorUsuario(Long id) {
 		return reservaDao.visualizarReservasPorUsuario(id);
+	}
+	
+	public void verificarHorarioDisponivel(Long id,LocalDate checkin,LocalDate checkout) {
+		
+			List<Quarto> list =reservaDao.verificarHorario(id, checkin, checkout);
+			if(!list.isEmpty()) {
+				throw new RuntimeException("Horário indisponível para reservar esse quarto!");
+			}
+		
 	}
 	
 	

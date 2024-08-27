@@ -68,9 +68,9 @@ public class QuartoImpl implements QuartoDao {
 	@Override
 	public List<Quarto> buscarPorTipo(Tipo tipo) {
 		em.getTransaction().begin();
-		String hql = "FROM Quarto WHERE tipo = :tipo";
-		Query query = (Query) em.createQuery(hql,QuartoDao.class);
-		
+		String hql = "FROM Quarto WHERE tipo = : tipo";
+		Query query = (Query) em.createQuery(hql,Quarto.class);
+		query.setParameter("tipo",tipo);
 		List<Quarto> list = query.getResultList();
 		
 		em.getTransaction().commit();

@@ -45,20 +45,27 @@ public class ReservaController {
 			try {
 				
 				retornarListaPorTipo();
+				String identificadorQuarto = JOptionPane.showInputDialog("Digite o id do quarto que deseja reservar:");
+				Long idQuarto = Long.parseLong(identificadorQuarto);
+				
 				
 				
 				String checkinString = JOptionPane.showInputDialog("Digite a data de entrada no formato dd/MM/yyyy ");
 				String checkoutString = JOptionPane.showInputDialog("Digite a data de saída no formato dd/MM/yyyy ");
-				String identificadorHospede = JOptionPane.showInputDialog("Digite o id do hóspede :");
-				Long idHospede = Long.parseLong(identificadorHospede);
-				String identificadorQuarto = JOptionPane.showInputDialog("Digite o id do quarto :");
-				Long idQuarto = Long.parseLong(identificadorQuarto);
-				
-				Hospede hospede = hospedeService.buscarPorId(idHospede);
-				Quarto quarto = quartoService.buscarPorId(idQuarto);
 				
 				LocalDate checkin = LocalDate.parse(checkinString,formatter);
 				LocalDate checkout = LocalDate.parse(checkoutString,formatter);
+				
+				reservaService.verificarHorarioDisponivel(idQuarto, checkin, checkout);
+				
+				
+				
+				String identificadorHospede = JOptionPane.showInputDialog("Digite o id do hóspede :");
+				
+				Long idHospede = Long.parseLong(identificadorHospede);
+				
+				Hospede hospede = hospedeService.buscarPorId(idHospede);
+				Quarto quarto = quartoService.buscarPorId(idQuarto);
 				
 				
 				Reserva reserva = new Reserva(checkin,checkout,hospede,quarto);
