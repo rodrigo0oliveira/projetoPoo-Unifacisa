@@ -3,7 +3,7 @@ package br.com.facisa.dtos;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record ExtratoEstadia(
+public record ExtratoEstadiaDto(
 		Long quartoId,String hospedeNome,Double valor
 		,LocalDate checkin,LocalDate checkout,BigDecimal precoHora) {
 

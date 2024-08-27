@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import br.com.facisa.dtos.QuartoDto;
 import br.com.facisa.entities.Hospede;
 import br.com.facisa.entities.Quarto;
 import br.com.facisa.entities.Reserva;
@@ -126,7 +127,7 @@ public class ReservaController {
 	
 	private void retornarListaPorTipo(){
 		Tipo tipo = quartoService.verificarTipo();
-		List<Quarto> list = quartoService.buscaPorTipo(tipo);
+		List<QuartoDto> list = quartoService.buscaPorTipo(tipo);
 		
 		if(list.isEmpty()) {
 			throw new RuntimeException("Não existem quartos no tipo selecionado!");

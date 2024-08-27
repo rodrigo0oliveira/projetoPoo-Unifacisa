@@ -23,11 +23,12 @@ public class QuartoImpl implements QuartoDao {
 	@Override
 	public List<Quarto> listarDisponiveis() {
 		em.getTransaction().begin();
-		String hql = "FROM Quarto WHERE status = :status";
+		String hql = "FROM Quarto WHERE status = :status AND status = :status";
 
 		Query query = (Query) em.createQuery(hql);
 
 		query.setParameter("status", Status.DISPONIVEL);
+		query.setParameter("status", Status.AGENDADO);
 		List<Quarto> list = query.getResultList();
 		
 		em.getTransaction().commit();

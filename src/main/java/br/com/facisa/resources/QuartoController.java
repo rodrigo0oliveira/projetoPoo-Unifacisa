@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import br.com.facisa.dtos.QuartoDto;
 import br.com.facisa.entities.Quarto;
 import br.com.facisa.entities.enums.Status;
 import br.com.facisa.entities.enums.Tipo;
@@ -55,7 +56,7 @@ public class QuartoController {
 		case "Buscar quartos disponíveis": {
 			
 			try {
-				List<Quarto> listQuartosDiponiveis = quartoService.listarQuartosDisponiveis();
+				List<QuartoDto> listQuartosDiponiveis = quartoService.listarQuartosDisponiveis();
 				JOptionPane.showMessageDialog(null,listQuartosDiponiveis.toString());
 			}
 			catch (RuntimeException e) {
@@ -68,7 +69,7 @@ public class QuartoController {
 		case "Buscar todos": {
 			
 			try {
-				List<Quarto> listQuartos = quartoService.listarQuartos();
+				List<QuartoDto> listQuartos = quartoService.listarQuartos();
 				JOptionPane.showMessageDialog(null,listQuartos.toString());
 			}
 			catch (RuntimeException e) {

@@ -1,15 +1,13 @@
 package br.com.facisa.services;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import br.com.facisa.dao.ReservaDao;
 import br.com.facisa.dao.impl.ReservaImpl;
-import br.com.facisa.dtos.ExtratoEstadia;
+import br.com.facisa.dtos.ExtratoEstadiaDto;
 import br.com.facisa.entities.Quarto;
 import br.com.facisa.entities.Reserva;
 import br.com.facisa.entities.enums.Status;
@@ -84,7 +82,7 @@ public class ReservaService {
 			
 			Double valorTotal = precoHora.doubleValue()*horas;
 			
-			ExtratoEstadia extrato = new ExtratoEstadia(reserva.getQuarto().getId()
+			ExtratoEstadiaDto extrato = new ExtratoEstadiaDto(reserva.getQuarto().getId()
 					, reserva.getPessoa().getNome(), valorTotal, reserva.getCheckin(), reserva.getCheckout(), precoHora);
 			
 			return extrato.toString();
