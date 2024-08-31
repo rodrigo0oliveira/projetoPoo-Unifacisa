@@ -1,9 +1,13 @@
 package br.com.facisa.entities;
 
 import javax.persistence.Entity;
+
+import jakarta.persistence.Table;
+
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "tb_funcionarios")
 public class Funcionario extends Pessoa{
 
     private String cargo;

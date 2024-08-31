@@ -23,6 +23,7 @@ public class QuartoImpl implements QuartoDao {
 	@Override
 	public List<Quarto> listarDisponiveis() {
 		em.getTransaction().begin();
+		
 		String hql = "FROM Quarto WHERE status = :status AND status = :status";
 
 		Query query = (Query) em.createQuery(hql);
@@ -30,29 +31,30 @@ public class QuartoImpl implements QuartoDao {
 		query.setParameter("status", Status.DISPONIVEL);
 		query.setParameter("status", Status.AGENDADO);
 		List<Quarto> list = query.getResultList();
-		
+
 		em.getTransaction().commit();
-		
+
 		return list;
 	}
 
 	@Override
 	public List<Quarto> listarTodos() {
-		
+
 		em.getTransaction().begin();
 		String hql = "FROM Quarto";
-		Query query = (Query) em.createQuery(hql,Quarto.class);
+		Query query = (Query) em.createQuery(hql, Quarto.class);
 		List<Quarto> list = query.getResultList();
 		em.getTransaction().commit();
 		return list;
-		
+
 	}
 
 	@Override
 	public void atualizarStatus(Long id, Status status) {
 		em.getTransaction().begin();
 		Quarto quarto = em.find(Quarto.class, id);
-		quarto.getStatus().setName(status.getName());
+		quarto.setStatus(status);
+		em.persist(quarto);
 		em.getTransaction().commit();
 	}
 
@@ -61,21 +63,21 @@ public class QuartoImpl implements QuartoDao {
 		em.getTransaction().begin();
 		Quarto quarto = em.find(Quarto.class, id);
 		em.getTransaction().commit();
-		
+
 		return quarto;
-		
+
 	}
 
 	@Override
 	public List<Quarto> buscarPorTipo(Tipo tipo) {
 		em.getTransaction().begin();
 		String hql = "FROM Quarto WHERE tipo = : tipo";
-		Query query = (Query) em.createQuery(hql,Quarto.class);
-		query.setParameter("tipo",tipo);
+		Query query = (Query) em.createQuery(hql, Quarto.class);
+		query.setParameter("tipo", tipo);
 		List<Quarto> list = query.getResultList();
-		
+
 		em.getTransaction().commit();
-		
+
 		return list;
 	}
 

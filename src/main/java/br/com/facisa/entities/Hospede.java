@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "tb_hospedes")
 public class Hospede extends Pessoa{
 
     private LocalDate nascimento;

@@ -8,5 +8,5 @@ public interface FuncionarioDao {
 
     void editar(Long id,Funcionario funcionario);
 
-   void excluir(Long id);
+    void excluir(Long id);
 }

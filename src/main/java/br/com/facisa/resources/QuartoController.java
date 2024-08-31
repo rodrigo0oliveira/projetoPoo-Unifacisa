@@ -84,7 +84,9 @@ public class QuartoController {
 				Long id = Long.parseLong(identificador);
 				Status status = quartoService.editarStatus();
 				
-				quartoService.atualizarStatusQuarto(id, status);
+				String message = quartoService.atualizarStatusQuarto(id, status);
+				
+				JOptionPane.showMessageDialog(null,message);
 			}
 			catch (RuntimeException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);

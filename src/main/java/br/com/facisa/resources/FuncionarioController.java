@@ -16,6 +16,7 @@ public class FuncionarioController {
 	}
 	
 	public void  FuncionarioController(){
+		
 		String [] opcoes = {"Cadastrar","Editar","Excluir"};
 		
 		Object selecionado = JOptionPane.showInputDialog(null, 
@@ -45,8 +46,8 @@ public class FuncionarioController {
 				
 				
 			}
-			catch (Exception e) {
-				e.printStackTrace();
+			catch (RuntimeException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 			}
 			break;
 		}
