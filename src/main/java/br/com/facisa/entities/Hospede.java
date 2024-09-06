@@ -67,7 +67,7 @@ public class Hospede extends Pessoa{
 	@Override
 	public String toString() {
 		return "Hóspede "+getNome()+ ": CPF = "+getCpf()+
-				" |Nascimento = "+this.nascimento+" |Número = "+this.numero;
+				" |Nascimento = "+this.nascimento+" |Número = "+this.numero+"\n";
 	}
     
     

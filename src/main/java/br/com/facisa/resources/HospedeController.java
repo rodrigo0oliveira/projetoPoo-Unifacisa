@@ -2,6 +2,7 @@ package br.com.facisa.resources;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -21,7 +22,7 @@ public class HospedeController {
 
 	public void HospedeController() {
 
-		String[] opcoes = { "Cadastrar", "Editar", "Excluir" };
+		String[] opcoes = { "Cadastrar", "Editar", "Excluir","Listar todos os hóspedes" };
 
 		Object selecionado = JOptionPane.showInputDialog(null, "Selecione", "Gerenciamento de hóspedes",
 				JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
@@ -104,7 +105,18 @@ public class HospedeController {
 			}
 			break;
 		}
-		default:
+		case "Listar todos os hóspedes":{
+			List<Hospede> list = hospedeService.listarTodos();
+			if(list.isEmpty()) {
+				JOptionPane.showMessageDialog(null,"Não existem hóspedes cadastrados!");
+			}
+			else {
+				JOptionPane.showMessageDialog(null,list);
+			}
+		}
+		default:{
+			
+		}
 		
 		}
 		

@@ -1,5 +1,7 @@
 package br.com.facisa.services;
 
+import java.util.List;
+
 import br.com.facisa.dao.HospedeDao;
 import br.com.facisa.dao.impl.HospedeImpl;
 import br.com.facisa.entities.Hospede;
@@ -50,6 +52,11 @@ public class HospedeService {
 	
 	public Hospede buscarPorId(Long id) {
 		return hospedeDao.buscarPorId(id);
+	}
+	
+	public List<Hospede> listarTodos(){
+		List<Hospede> list = hospedeDao.listarTodos();
+		return list;
 	}
 	
 	

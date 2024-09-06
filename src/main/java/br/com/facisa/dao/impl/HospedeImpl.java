@@ -1,9 +1,15 @@
 package br.com.facisa.dao.impl;
 
 import br.com.facisa.dao.HospedeDao;
+import br.com.facisa.entities.Funcionario;
 import br.com.facisa.entities.Hospede;
+import jakarta.persistence.Query;
 
 import static br.com.facisa.database.Db.em;
+
+import java.util.List;
+
+import javax.persistence.TypedQuery;
 
 public class HospedeImpl implements HospedeDao {
 
@@ -46,5 +52,17 @@ public class HospedeImpl implements HospedeDao {
 		em.getTransaction().commit();
 		return hospede;
 
+	}
+
+	@Override
+	public List<Hospede> listarTodos() {
+		em.getTransaction().begin();
+		
+		String hql = "FROM Hospede";
+		TypedQuery<Hospede> query = em.createQuery(hql,Hospede.class);
+		List<Hospede> list = query.getResultList();
+		em.getTransaction().commit();
+		
+		return list;
 	}
 }

@@ -1,5 +1,8 @@
 package br.com.facisa.dao;
 
+import java.util.List;
+
+import br.com.facisa.entities.Funcionario;
 import br.com.facisa.entities.Hospede;
 
 public interface HospedeDao {
@@ -11,6 +14,8 @@ public interface HospedeDao {
     void excluir(Long id);
     
     Hospede buscarPorId(Long id);
+    
+    List<Hospede> listarTodos();
     
     
 }
