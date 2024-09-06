@@ -1,9 +1,14 @@
 package br.com.facisa.dao.impl;
 
+import static br.com.facisa.database.Db.em;
+
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import br.com.facisa.dao.FuncionarioDao;
 import br.com.facisa.entities.Funcionario;
-
-import static br.com.facisa.database.Db.em;
+import jakarta.persistence.Query;
 
 public class FuncionarioImpl implements FuncionarioDao {
 
@@ -37,4 +42,14 @@ public class FuncionarioImpl implements FuncionarioDao {
         obj.setSalario(funcionario.getSalario());
         obj.setTurno(funcionario.getTurno());
     }
+
+	@Override
+	public List<Funcionario> listarTodos() {
+		em.getTransaction().begin();
+		String hql = "FROM Funcionario";
+		TypedQuery<Funcionario> query = em.createQuery(hql,Funcionario.class);
+		List<Funcionario> list = query.getResultList();
+		em.getTransaction().commit();
+		return list;
+	}
 }

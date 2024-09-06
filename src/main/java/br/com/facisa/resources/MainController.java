@@ -60,6 +60,7 @@ public class MainController {
 			}
 			case "Sair" : {
 				JOptionPane.showMessageDialog(null, "Gerenciamento encerrado!");
+				Db.closeConnection();
 				rodar = false;
 			}
 			
